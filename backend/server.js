@@ -17,17 +17,36 @@ const db = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
     port: process.env.DB_PORT
 });
 
 
 db.connect((err) => {
-    if (err) {
-        console.error('Erro ao conectar no MySQL:', err);
-        return;
-    }
-    console.log('Conectado ao banco de dados.');
+
+    if (err) throw err;
+    console.error('Conectado ao banco!');
+
+    db.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME}`, (err, result) => {
+        if (err) throw err;
+
+        db.changeUser({database: process.env.DB_NAME }, (err) => {
+            if (err) throw err;
+
+            const createTableQuery = `
+            CREATE TABLE IF NOT EXISTS produtos (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                nome VARCHAR(255) NOT NULL,
+                descricao TEXT NOT NULL,
+                valor DECIMAL(10, 2) NOT NULL,
+                disponivel BOOLEAN NOT NULL
+            )
+            `;
+
+            db.query(createTableQuery, (err, result) => {
+                if (err) throw err;
+            });
+        });
+    });
 });
 
 
@@ -36,12 +55,11 @@ app.get('/', (req, res) => {
 });
 
 
-
 app.post('/produtos', (req, res) => {
-    const { nome, descricao, valor, disponibilidade } = req.body;
+    const { nome, descricao, valor, disponivel } = req.body;
 
     const query = 'INSERT INTO produtos (nome, descricao, valor, disponivel) VALUES (?, ?, ?, ?)';
-    db.query(query, [nome, descricao, valor, disponibilidade], (err, result) => {
+    db.query(query, [nome, descricao, valor, disponivel], (err, result) => {
         if (err) {
             console.error('Erro ao cadastrar produto:', err);
             return res.status(500).send('Erro no cadastro do produto.');
