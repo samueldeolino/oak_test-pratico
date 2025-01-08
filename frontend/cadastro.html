@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de produtos</title>
+    <link rel="stylesheet" href="./styles-css/style.css">
+    <link rel="stylesheet" href="./styles-css/cadastro.css">
+</head>
+<body>
+
+    <header class="top-bar">
+            <h1>Cadastro de produtos</h1>
+    </header>
+
+
+    <main class="section-register-products">
+        
+        <div class="register-product-container">
+            <form action="" >
+                <label for="name-product">Nome do produto:
+                </label><br>
+                <input type="text" id="name-product" name="product-name" required oninvalid="this.setCustomValidity('Por favor, insira o nome do produto.')"
+                oninput="this.setCustomValidity('')"><br>
+
+                <label for="description-product">Descrição:
+                </label><br>
+                <input type="text" id="description-product" name="description-product" required oninvalid="this.setCustomValidity('Por favor, insira a descrição do produto.')"
+                oninput="this.setCustomValidity('')"><br>
+
+                <label for="value-product">Valor:</label><br>
+                <input type="number" name="value-product" id="value-product" required oninvalid="this.setCustomValidity('Por favor, insira o valor do produto.')"
+                oninput="this.setCustomValidity('')"><br>
+
+                <label for="product-disponibility">Disponível:</label><br>
+                <select name="disponibilidade" id="product-disponibility">
+                    <option value="sim">Sim</option>
+                    <option value="nao">Não</option>
+                </select>
+                <br> 
+
+                <div class="button-group">
+                    <button type="submit" class="register-button">Cadastrar</button>
+                    <button type="button" class="cancel-button">Cancelar</button>
+                </div>
+            </form>
+            
+        </div>
+
+    </main  >
+
+    <footer>
+        <div class="site-icon">
+            <img src="./images/logo-oak.png" alt="image-site">
+        </div>
+    </footer>
+    <script src="script.js" defer></script>
+</body>
+</html>

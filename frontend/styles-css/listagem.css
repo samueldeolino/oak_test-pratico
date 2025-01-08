@@ -1,0 +1,98 @@
+@import url(./style.css);
+
+
+html, root{
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.top-bar {
+    display: flex;
+    background-color: #002828;
+    color: #f7f7f7;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+main.section-list-products {
+    margin-top: 50px;
+    display: grid;
+    justify-content: center;
+}
+
+
+.list-product-container {
+    padding: 20px;          
+    background-color: white; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 600px;
+    
+}
+
+.list-product-container thead{
+    background-color: #002828;
+    color: #f7f7f7;
+    width: 100%;
+    border-bottom: 2px solid rgb(160 160 160);
+}
+
+
+.list-product-container table{
+    width: 100%;
+    border-spacing: 0 4px;
+    border-radius: 10px;
+    
+}
+
+.product-table th {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.table td {
+    border-bottom: 1px solid black;
+    font-size: 18px;
+}
+
+
+.list-product-container tbody{
+    width: 100%;
+    margin-top: 1px;
+    
+}
+
+
+.button-container{
+    text-align: center;
+}
+
+div .register-button {
+    width: 300px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 700;
+    background-color: #002828;
+    color: aliceblue;
+    border: 1px solid;
+    border-radius: 5px;  
+    cursor: pointer;
+    font-size: 17px;
+}
+
+footer div{
+    margin: 0;
+    text-align: center;
+    padding-top: 80px;
+}

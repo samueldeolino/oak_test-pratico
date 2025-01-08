@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+html, root{
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.top-bar {
+    display: flex;
+    background-color: #002828;
+    color: #f7f7f7;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+main.section-register-products {
+    margin-top: 50px;
+    display: grid;
+    justify-content: center;
+}
+
+.register-product-container {
+    padding: 20px;          
+    background-color: white; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 600px;
+    
+}
+
+
+
+/* Listagem de produtos */
+
