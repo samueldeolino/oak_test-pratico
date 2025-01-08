@@ -1,0 +1,47 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-container-oak
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: oak_catalog
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - backend-network
+  
+  backend:
+    build:
+      context: ./backend
+    container_name: backend-container-oak
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: oak_catalog
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    networks:
+      - backend-network
+    command: ["sh", "-c", "sleep 5 && node server.js"]
+  
+  frontend:
+    build:
+      context: ./frontend
+    container_name: front-container-oak
+    ports:
+      - "8080:80"
+    networks:
+      - backend-network
+    
+networks:
+  backend-network:
+    driver: bridge
+
+volumes:
+  mysql-data:

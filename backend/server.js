@@ -38,7 +38,7 @@ db.connect((err) => {
                 nome VARCHAR(255) NOT NULL,
                 descricao TEXT NOT NULL,
                 valor DECIMAL(10, 2) NOT NULL,
-                disponivel BOOLEAN NOT NULL
+                disponivel TINYINT(1) NOT NULL
             )
             `;
 
@@ -58,8 +58,10 @@ app.get('/', (req, res) => {
 app.post('/produtos', (req, res) => {
     const { nome, descricao, valor, disponivel } = req.body;
 
+    const disponivelConvertido = (disponivel === 1 || disponivel === '1') ? 1 : 0;
+
     const query = 'INSERT INTO produtos (nome, descricao, valor, disponivel) VALUES (?, ?, ?, ?)';
-    db.query(query, [nome, descricao, valor, disponivel], (err, result) => {
+    db.query(query, [nome, descricao, valor, disponivelConvertido], (err, result) => {
         if (err) {
             console.error('Erro ao cadastrar produto:', err);
             return res.status(500).send('Erro no cadastro do produto.');
