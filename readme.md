@@ -1,6 +1,6 @@
-Requisito: Cadastro e Listagem de Produtos
+# Requisito: Cadastro e Listagem de Produtos
 
-Cadastro:
+## Cadastro:
 
 - Formulário com os campos abaixo:
 
@@ -9,7 +9,7 @@ Cadastro:
   - Valor do produto - campo de valor
   - Disponível para venda - campo com 2 opções: sim / não
 
-Listagem:
+## Listagem:
 
 - Colunas da listagem: nome, valor
 - Ordenação por valor do menor para o maior
@@ -17,8 +17,11 @@ Listagem:
 - Deve existir um botão para cadastrar um novo produto a partir da listagem
 
 
-Comandos utilizados:
+## Comandos utilizados:
 - npm init -y
 - npm install mysql2
 - npm install cors
 - npm install dotenv
+
+## Docker Compose
+```docker compose --env-file ./backend/.env up```

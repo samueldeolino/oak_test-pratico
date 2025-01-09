@@ -1,17 +1,13 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
-require('dotenv').config();
+//require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT;
 
-
 app.use(cors());
-
-
 app.use(express.json());
-
 
 const db = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -20,17 +16,22 @@ const db = mysql.createConnection({
     port: process.env.DB_PORT
 });
 
-
 db.connect((err) => {
+    if (err) {
+        console.error('Erro ao conectar ao banco');
+        throw err;
+    }
 
-    if (err) throw err;
     console.error('Conectado ao banco!');
 
     db.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME}`, (err, result) => {
         if (err) throw err;
 
         db.changeUser({database: process.env.DB_NAME }, (err) => {
-            if (err) throw err;
+            if (err) {
+                console.error('Erro no change user');
+                throw err;
+            }
 
             const createTableQuery = `
             CREATE TABLE IF NOT EXISTS produtos (
@@ -49,11 +50,9 @@ db.connect((err) => {
     });
 });
 
-
 app.get('/', (req, res) => {
     res.send('API funcionando!');
 });
-
 
 app.post('/produtos', (req, res) => {
     const { nome, descricao, valor, disponivel } = req.body;
@@ -70,7 +69,6 @@ app.post('/produtos', (req, res) => {
     });
 });
 
-
 app.get('/produtos', (req, res) => {
     const query = 'SELECT nome, valor FROM produtos ORDER BY valor ASC';
     db.query(query, (err, results) => {
@@ -81,7 +79,6 @@ app.get('/produtos', (req, res) => {
         res.status(200).json(results);
     });
 });
-
 
 app.listen(port, () => {
     console.log(`Servidor back-end rodando em http://localhost:${port}`);

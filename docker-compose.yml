@@ -4,9 +4,9 @@ services:
     container_name: mysql-container-oak
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: oak_catalog
+      MYSQL_DATABASE: ${DB_NAME}
     ports:
-      - "3307:3306"
+      - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
@@ -17,11 +17,12 @@ services:
       context: ./backend
     container_name: backend-container-oak
     environment:
+      PORT: ${PORT}
       DB_HOST: mysql
-      DB_PORT: 3306
+      DB_PORT: ${DB_PORT}
       DB_USER: root
       DB_PASSWORD: root
-      DB_NAME: oak_catalog
+      DB_NAME: ${DB_NAME}
     ports:
       - "3000:3000"
     depends_on:

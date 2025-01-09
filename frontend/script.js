@@ -1,6 +1,5 @@
 document.querySelector('.register-button').addEventListener('click', async (event) => {
 
-
   const validarCampos = () => {
     const nome = document.getElementById('name-product').value;
     const descricao = document.getElementById('description-product').value;
@@ -16,10 +15,8 @@ document.querySelector('.register-button').addEventListener('click', async (even
   if (camposValidados === false) {
     return;
   };
- 
 
   window.location.href = 'listagem.html'; 
-
 
     event.preventDefault(); 
 
@@ -27,7 +24,6 @@ document.querySelector('.register-button').addEventListener('click', async (even
     const descricao = document.getElementById('description-product').value;
     const valor = parseFloat(document.getElementById('value-product').value);
     const disponibilidade = document.getElementById('product-disponibility').value;
-
     
     const produto = {
         nome,
