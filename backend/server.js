@@ -55,10 +55,11 @@ app.get('/', (req, res) => {
 });
 
 app.post('/produtos', (req, res) => {
-    const { nome, descricao, valor, disponibilidade } = req.body;
+    const { nome, descricao, valor, disponivel } = req.body;
+    console.log("dados do body:", req.body);
 
     const query = 'INSERT INTO produtos (nome, descricao, valor, disponivel) VALUES (?, ?, ?, ?)';
-    db.query(query, [nome, descricao, valor, disponibilidade], (err, result) => {
+    db.query(query, [nome, descricao, valor, disponivel], (err, result) => {
         if (err) {
             console.error('Erro ao cadastrar produto:', err);
             return res.status(500).send('Erro no cadastro do produto.');
