@@ -16,6 +16,9 @@
 - Quando cadastrar um novo produto é para abrir a listagem automaticamente
 - Deve existir um botão para cadastrar um novo produto a partir da listagem
 
+## Requisitos:
+- Docker engine
+- Docker compose
 
 ## Comandos utilizados:
 - npm init -y
@@ -24,4 +27,10 @@
 - npm install dotenv
 
 ## Docker Compose
-```docker compose --env-file ./backend/.env up```
+- Passos
+  - Renomear o .env.example para -> `.env`
+  - Execute o comando: ```docker compose --env-file ./backend/.env build -d```
+  - Verifique se os containers subiu: ```docker ps```
+
+## Acessar:
+- `localhost:8080/cadastro.html` 
