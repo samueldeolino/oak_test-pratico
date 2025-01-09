@@ -29,7 +29,7 @@
 ## Docker Compose
 - Passos
   - Renomear o .env.example para -> `.env`
-  - Execute o comando: ```docker compose --env-file ./backend/.env build -d```
+  - Execute o comando: ```docker compose --env-file ./backend/.env up```
   - Verifique se os containers subiu: ```docker ps```
 
 ## Acessar:
